@@ -36,10 +36,7 @@ describe('Navbar', () => {
     describe('Template', () => {
         // use regex to ensure correct bindings are used e.g., {{  }}
         it('has "Home" in template', () => {
-            expect(NavbarTemplate).toMatch(/Home/g);
-        });
-        it('has "About" in template', () => {
-            expect(NavbarTemplate).toMatch(/About/g);
+            expect(NavbarTemplate).toMatch(/URL Shortener Service/g);
         });
     });
 

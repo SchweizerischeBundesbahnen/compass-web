@@ -4,13 +4,12 @@
     <div class="container jumbotron">
         <h1>{{ $ctrl.title }}</h1>
 
-        <p>{{ $ctrl.welcomeMessage }}</p>
-
-        <p>{{ $ctrl.descriptionOfAction }}</p>
-
         <form>
             <div class="form-group">
-                <input type="text" class="form-control" id="urlAddress" placeholder="URL">
+                <input type="text" class="form-control" id="urlAddress"
+                       placeholder={{$ctrl.descriptionOfAction}}>
+
+                <p></p>
 
                 <button type="button" class="btn btn-default tile" ng-click=$ctrl.createUrl()>
                     <span>{{ $ctrl.labelCreateButton }}</span>
@@ -18,8 +17,10 @@
             </div>
         </form>
 
+        <p></p>
+
         <div ng-show="$ctrl.id != null">
-            Die Short-URL ist: http://localhost:8080/x/{{ $ctrl.id }}
+            Der Shortlink ist: {{ $ctrl.baseRedirectUrl}}{{ $ctrl.id }}
         </div>
     </div>
 </main>

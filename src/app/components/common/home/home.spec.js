@@ -31,9 +31,17 @@ describe('Home', () => {
             let controller = makeController();
             expect(controller.title).toBe('URL Shortener Service');
         });
-        it('has a name property [welcomeMessage]', () => {
+        it('has a name property [labelCreateButton]', () => {
             let controller = makeController();
-            expect(controller.welcomeMessage).toBe('Herzlich Willkommen zum SBB-Service \'URL Shortener\'');
+            expect(controller.labelCreateButton).toBeDefined();
+        });
+        it('has a name property [descriptionOfAction]', () => {
+            let controller = makeController();
+            expect(controller.descriptionOfAction).toBeDefined();
+        });
+        it('has a name property [baseRedirectUrl]', () => {
+            let controller = makeController();
+            expect(controller.baseRedirectUrl).toBeDefined();
         });
     });
 
@@ -42,8 +50,14 @@ describe('Home', () => {
         it('has name in template [title]', () => {
             expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.title\s?}}/g);
         });
-        it('has name in template [welcomeMessage]', () => {
-            expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.welcomeMessage\s?}}/g);
+        it('has name in template [labelCreateButton]', () => {
+            expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.labelCreateButton\s?}}/g);
+        });
+        it('has name in template [descriptionOfAction]', () => {
+            expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.descriptionOfAction\s?}}/g);
+        });
+        it('has name in template [baseRedirectUrl]', () => {
+            expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.baseRedirectUrl\s?}}/g);
         });
     });
 

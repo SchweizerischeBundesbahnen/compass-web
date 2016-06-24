@@ -5,12 +5,12 @@ let self;
 class HomeController {
     constructor($http) {
         this.backendServiceUrl = 'http://localhost:8080/rest/1.0/shortlink/create?dest=';
+        this.baseRedirectUrl = 'http://localhost:8080/x/';
 
         this.title = 'URL Shortener Service';
-        this.welcomeMessage = 'Herzlich Willkommen zum SBB-Service \'URL Shortener\'';
-        this.labelCreateButton = 'Generiere Short-URL';
+        this.labelCreateButton = 'Generiere Shortlink';
         this.descriptionOfAction =
-            'Um eine Short-URL zu erstellen, fügen Sie bitte im Textfeld die gewünschte Endadresse ein.';
+            'Fügen Sie hier die gewünschte Adresse ein und klicken Sie anschliessend unten auf den Knopf.';
 
         this.http = $http;
         self = this;
