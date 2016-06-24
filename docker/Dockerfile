@@ -6,7 +6,7 @@ ENV ARTIFACT_GROUPID ch.sbb
 ENV REPO_ID hosted.mwe-wzu.snapshots
 ENV ARTIFACT_ID compass-web
 ENV ARTIFACT_VERSION LATEST
-ENV ARTIFACT_URL http://repo.sbb.ch/service/local/artifact/maven/content?r=${REPO_ID}&g=${ARTIFACT_GROUPID}&a=${ARTIFACT_ID}&v=LATEST
+ENV ARTIFACT_URL http://repo.sbb.ch/service/local/artifact/maven/content?r=${REPO_ID}&g=${ARTIFACT_GROUPID}&a=${ARTIFACT_ID}&v=LATEST&p=tar.gz
 
 RUN curl $ARTIFACT_URL -o ${ARTIFACT_ID}-${ARTIFACT_VERSION}.tar.gz
 
