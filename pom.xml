@@ -4,7 +4,7 @@
 
     <groupId>ch.sbb</groupId>
     <artifactId>compass-web</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.8-SNAPSHOT</version>
 
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
@@ -109,13 +109,17 @@
     </build>
 
     <distributionManagement>
-        <repository>
-            <id>hosted.esta-webjs.releases</id>
-            <url>${nexus_release_url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>hosted.esta-webjs.snapshots</id>
-            <url>${nexus_snapshot_url}</url>
-        </snapshotRepository>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>hosted.mwe-wzu.releases</id>
+			<name>Compass Releases</name>
+			<url>http://repo.sbb.ch/content/repositories/hosted.mwe-wzu.releases/</url>
+		</repository>
+		<snapshotRepository>
+			<uniqueVersion>true</uniqueVersion>
+			<id>hosted.mwe-wzu.releases</id>
+			<name>Compass Snapshots</name>
+			<url>http://repo.sbb.ch/content/repositories/hosted.mwe-wzu.snapshots/</url>
+		</snapshotRepository>
     </distributionManagement>
 </project>
