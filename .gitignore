@@ -1,0 +1,8 @@
+# IntelliJ ignores
+target/
+.idea/
+*.iml
+
+# WebJS ignores
+node_modules/
+dist/
