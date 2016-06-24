@@ -29,11 +29,11 @@ describe('Home', () => {
     describe('Controller', () => {
         it('has a name property [title]', () => {
             let controller = makeController();
-            expect(controller.title).toBe('ESTA WebJS - Starterkit');
+            expect(controller.title).toBe('URL Shortener Service');
         });
         it('has a name property [welcomeMessage]', () => {
             let controller = makeController();
-            expect(controller.welcomeMessage).toBe('Herzlich Willkommen');
+            expect(controller.welcomeMessage).toBe('Herzlich Willkommen zum SBB-Service \'URL Shortener\'');
         });
     });
 
