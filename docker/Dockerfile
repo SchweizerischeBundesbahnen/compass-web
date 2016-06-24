@@ -3,7 +3,7 @@ FROM registry.sbb.ch/kd_esta/nginx-openshift-base:0.0.11
 MAINTAINER Reto Lehmann <reto.lehmann@sbb.ch>
 
 ENV ARTIFACT_GROUPID ch.sbb
-ENV REPO_ID snapshots
+ENV REPO_ID hosted.mwe-wzu.snapshots
 ENV ARTIFACT_ID compass-web
 ENV ARTIFACT_VERSION LATEST
 ENV ARTIFACT_URL http://repo.sbb.ch/service/local/artifact/maven/content?r=${REPO_ID}&g=${ARTIFACT_GROUPID}&a=${ARTIFACT_ID}&v=LATEST
