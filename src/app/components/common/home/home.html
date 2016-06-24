@@ -1,11 +1,25 @@
 <navbar></navbar>
 <messages></messages>
 <main>
-    <div class="container">
-        <div class="jumbotron">
-            <h1>{{ $ctrl.title }}</h1>
+    <div class="container jumbotron">
+        <h1>{{ $ctrl.title }}</h1>
 
-            <p>{{ $ctrl.welcomeMessage }}</p>
+        <p>{{ $ctrl.welcomeMessage }}</p>
+
+        <p>{{ $ctrl.descriptionOfAction }}</p>
+
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="urlAddress" placeholder="URL">
+
+                <button type="button" class="btn btn-default tile" ng-click=$ctrl.createUrl()>
+                    <span>{{ $ctrl.labelCreateButton }}</span>
+                </button>
+            </div>
+        </form>
+
+        <div ng-show="$ctrl.id != null">
+            Die Short-URL ist: http://localhost:8080/x/{{ $ctrl.id }}
         </div>
     </div>
 </main>

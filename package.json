@@ -2,7 +2,7 @@
   "name": "compass-web",
   "version": "0.0.8",
   "description": "Web Service for the URL Shortener Service",
-  "homepage": "https://github.com/SchweizerischeBundesbahnen/esta-webjs",
+  "homepage": "https://github.com/SchweizerischeBundesbahnen/compass-web",
   "dependencies": {
     "angular": "^1.5.2",
     "angular-resource": "^1.5.2",
@@ -50,16 +50,16 @@
     "webpack-dev-server": "^1.12.1"
   },
   "keywords": [
-    "esta-webjs-starterkit"
+    "urlshortener"
   ],
   "author": {
-    "name": "Reto Lehmann",
-    "email": "reto.lehmann@sbb.ch"
+    "name": "Igor Masen",
+    "email": "igor.masen@sbb.ch"
   },
   "contributors": [
     {
-      "name": "Stefan Zeller",
-      "email": "stefan.zeller@sbb.ch"
+      "name": "Kerem Adigüzel",
+      "email": "zafer.adiguezel@sbb.ch"
     }
   ],
   "license": "Apache-2.0"
