@@ -5,7 +5,10 @@ let self;
 class HomeController {
     constructor($http) {
         this.backendServiceUrl = 'http://localhost:8080/rest/1.0/shortlink/create?dest=';
+        this.baseDeleteUrl = 'http://localhost:8080/rest/1.0/shortlink/delete?id=';
         this.baseRedirectUrl = 'http://localhost:8080/x/';
+        this.urlToCreate = '';
+        this.urlToDelete = '';
 
         this.title = 'URL Shortener Service';
         this.labelCreateButton = 'Generiere Shortlink';
@@ -17,11 +20,21 @@ class HomeController {
     }
 
     createUrl() {
-        var url = document.getElementById('urlAddress').value;
-        this.http.post(this.backendServiceUrl + url)
+        this.http.post(this.backendServiceUrl + this.urlToCreate)
             .success(function (data) {
                 self.id = data.id;
             });
+    }
+
+    deleteShortlink() {
+        var indexOfSlash = this.urlToDelete.indexOf('x/');
+        var id = this.urlToDelete.substr(indexOfSlash + 2);
+
+        this.http.delete(this.baseDeleteUrl + id).success(() => {
+            self.deleted = true;
+        }).error(() => {
+            self.deleted = false;
+        });
     }
 }
 

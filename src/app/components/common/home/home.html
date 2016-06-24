@@ -4,23 +4,43 @@
     <div class="container jumbotron">
         <h1>{{ $ctrl.title }}</h1>
 
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" id="urlAddress"
-                       placeholder={{$ctrl.descriptionOfAction}}>
+        <h2>Shortlink erstellen</h2>
 
-                <p></p>
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model=$ctrl.urlToCreate
+                   placeholder={{$ctrl.descriptionOfAction}}>
 
-                <button type="button" class="btn btn-default tile" ng-click=$ctrl.createUrl()>
-                    <span>{{ $ctrl.labelCreateButton }}</span>
-                </button>
-            </div>
-        </form>
+            <p></p>
+
+            <button type="button" class="btn btn-default tile" ng-click=$ctrl.createUrl()>
+                <span>{{ $ctrl.labelCreateButton }}</span>
+            </button>
+        </div>
 
         <p></p>
 
         <div ng-show="$ctrl.id != null">
             Der Shortlink ist: {{ $ctrl.baseRedirectUrl}}{{ $ctrl.id }}
+        </div>
+
+
+        <h2>Shortlink löschen</h2>
+
+        <div class="form-group">
+            <input type="text" class="form-control" ng-model=$ctrl.urlToDelete
+                   placeholder="Geben Sie hier den zu löschenden Shortlink ein">
+
+            <p></p>
+
+            <button type="button" class="btn btn-default tile" ng-click=$ctrl.deleteShortlink()>
+                <span>Lösche Schortlink</span>
+            </button>
+        </div>
+
+        <p></p>
+
+        <div ng-show="$ctrl.deleted == true">
+            Der Shortlink {{$ctrl.urlToDelete}} wurde gelöscht.
         </div>
     </div>
 </main>
