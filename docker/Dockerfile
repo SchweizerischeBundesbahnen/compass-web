@@ -19,4 +19,4 @@ RUN curl $ARTIFACT_URL -o ${ARTIFACT_ID}-${ARTIFACT_VERSION}.tar.gz
 RUN tar -xzf ${ARTIFACT_ID}-${ARTIFACT_VERSION}.tar.gz
 RUN mv build/* /usr/share/nginx/html
 
-CMD sed -i "s#http://localhost:8080/#${BACKEND_URL}#g" /usr/share/nginx/html/app.*.js && nginx -g 'daemon off;'
+CMD sed -i "s#http://localhost:8080#${BACKEND_URL}#g" /usr/share/nginx/html/app.*.js && nginx -g 'daemon off;'
