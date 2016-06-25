@@ -8,6 +8,9 @@ ENV ARTIFACT_ID compass-web
 ENV ARTIFACT_VERSION LATEST
 ENV ARTIFACT_URL http://repo.sbb.ch/service/local/artifact/maven/content?r=${REPO_ID}&g=${ARTIFACT_GROUPID}&a=${ARTIFACT_ID}&v=LATEST&p=tar.gz
 
+# Install curl
+RUN apt-get update && apt-get install curl -y && apt-get clean
+
 # Get the app
 RUN curl $ARTIFACT_URL -o ${ARTIFACT_ID}-${ARTIFACT_VERSION}.tar.gz
 
