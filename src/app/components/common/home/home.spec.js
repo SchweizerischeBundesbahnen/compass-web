@@ -27,6 +27,40 @@ describe('Home', () => {
     });
 
     describe('Controller', () => {
+        it('has a name property [backendServiceUrl]', () => {
+            let controller = makeController();
+            expect(controller.backendServiceUrl).toBe(
+                'http://localhost:8080/rest/1.0/shortlink/create?dest=');
+        });
+        it('has a name property [backendVanityServiceUrl]', () => {
+            let controller = makeController();
+            expect(controller.backendVanityServiceUrl).toBe(
+                'http://localhost:8080/rest/1.0/shortlink/createVanityUrl?');
+        });
+        it('has a name property [baseDeleteUrl]', () => {
+            let controller = makeController();
+            expect(controller.baseDeleteUrl).toBe('http://localhost:8080/rest/1.0/shortlink/delete?id=');
+        });
+        it('has a name property [baseRedirectUrl]', () => {
+            let controller = makeController();
+            expect(controller.baseRedirectUrl).toBeDefined();
+        });
+        it('has a name property [urlToCreate]', () => {
+            let controller = makeController();
+            expect(controller.urlToCreate).toBeDefined();
+        });
+        it('has a name property [urlToDelete]', () => {
+            let controller = makeController();
+            expect(controller.urlToDelete).toBeDefined();
+        });
+        it('has a name property [txtIdForUrl]', () => {
+            let controller = makeController();
+            expect(controller.txtIdForUrl).toBeDefined();
+        });
+        it('has a name property [urlId]', () => {
+            let controller = makeController();
+            expect(controller.urlId).toBeDefined();
+        });
         it('has a name property [title]', () => {
             let controller = makeController();
             expect(controller.title).toBe('URL Shortener Service');
@@ -38,10 +72,6 @@ describe('Home', () => {
         it('has a name property [descriptionOfAction]', () => {
             let controller = makeController();
             expect(controller.descriptionOfAction).toBeDefined();
-        });
-        it('has a name property [baseRedirectUrl]', () => {
-            let controller = makeController();
-            expect(controller.baseRedirectUrl).toBeDefined();
         });
     });
 
@@ -58,6 +88,15 @@ describe('Home', () => {
         });
         it('has name in template [baseRedirectUrl]', () => {
             expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.baseRedirectUrl\s?}}/g);
+        });
+        it('has name in template [txtIdForUrl]', () => {
+            expect(HomeTemplate).toMatch(/\s?\$ctrl\.txtIdForUrl\s?/g);
+        });
+        it('has name in template [urlToCreate]', () => {
+            expect(HomeTemplate).toMatch(/\s?\$ctrl\.urlToCreate\s?/g);
+        });
+        it('has name in template [urlToDelete]', () => {
+            expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.urlToDelete\s?}}/g);
         });
     });
 
