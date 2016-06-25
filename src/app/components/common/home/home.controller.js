@@ -1,12 +1,11 @@
 let self;
 class HomeController {
     /*@ngInject*/
-    constructor($http, envService) {
-        var backendUrl = envService.read('backendUrl');
-        this.backendServiceUrl = backendUrl + '/rest/1.0/shortlink/create?dest=';
-        this.backendVanityServiceUrl = backendUrl + '/rest/1.0/shortlink/createVanityUrl?';
-        this.baseDeleteUrl = backendUrl + '/rest/1.0/shortlink/delete?id=';
-        this.baseRedirectUrl = backendUrl + '/x/';
+    constructor($http, config) {
+        this.backendServiceUrl = config.backendUrl + '/rest/1.0/shortlink/create?dest=';
+        this.backendVanityServiceUrl = config.backendUrl + '/rest/1.0/shortlink/createVanityUrl?';
+        this.baseDeleteUrl = config.backendUrl + '/rest/1.0/shortlink/delete?id=';
+        this.baseRedirectUrl = config.backendUrl + '/x/';
         this.urlToCreate = '';
         this.urlToDelete = '';
         this.txtIdForUrl = '';

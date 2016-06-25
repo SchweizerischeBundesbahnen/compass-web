@@ -12,13 +12,18 @@ import HomeController from './home.controller';
 import HomeTemplate from './home.html';
 
 describe('Home', () => {
-    let $rootScope, makeController;
+    let $rootScope, makeController, configMock;
 
     beforeEach(window.module(HomeModule.name));
-    beforeEach(inject((_$rootScope_) => {
+    beforeEach(inject((_$rootScope_,_$http_) => {
         $rootScope = _$rootScope_;
+
+        configMock = {
+            backendUrl: 'http://localhost:8080'
+        };
+
         makeController = () => {
-            return new HomeController();
+            return new HomeController(_$http_,configMock);
         };
     }));
 

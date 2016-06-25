@@ -9,13 +9,12 @@
  */
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
-import environment from 'angular-environment';
 
 import template from './home.html';
 import controller from './home.controller';
 
 let homeModule = angular.module('home', [
-        uiRouter, environment
+        uiRouter
     ])
     .config(/*@ngInject*/($stateProvider, $urlRouterProvider) => {
         $urlRouterProvider.otherwise('/');
