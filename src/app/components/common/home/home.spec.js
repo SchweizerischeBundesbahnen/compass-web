@@ -50,13 +50,9 @@ describe('Home', () => {
             let controller = makeController();
             expect(controller.baseRedirectUrl).toBeDefined();
         });
-        it('has a name property [urlToCreate]', () => {
+        it('has a name property [url]', () => {
             let controller = makeController();
-            expect(controller.urlToCreate).toBeDefined();
-        });
-        it('has a name property [urlToDelete]', () => {
-            let controller = makeController();
-            expect(controller.urlToDelete).toBeDefined();
+            expect(controller.url).toBeDefined();
         });
         it('has a name property [txtIdForUrl]', () => {
             let controller = makeController();
@@ -78,6 +74,10 @@ describe('Home', () => {
             let controller = makeController();
             expect(controller.descriptionOfAction).toBeDefined();
         });
+        it('has a name property [descriptionOfVanityAction]', () => {
+            let controller = makeController();
+            expect(controller.descriptionOfVanityAction).toBeDefined();
+        });
     });
 
     describe('Template', () => {
@@ -91,17 +91,17 @@ describe('Home', () => {
         it('has name in template [descriptionOfAction]', () => {
             expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.descriptionOfAction\s?}}/g);
         });
+        it('has name in template [descriptionOfVanityAction]', () => {
+            expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.descriptionOfVanityAction\s?}}/g);
+        });
         it('has name in template [baseRedirectUrl]', () => {
             expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.baseRedirectUrl\s?}}/g);
         });
         it('has name in template [txtIdForUrl]', () => {
             expect(HomeTemplate).toMatch(/\s?\$ctrl\.txtIdForUrl\s?/g);
         });
-        it('has name in template [urlToCreate]', () => {
-            expect(HomeTemplate).toMatch(/\s?\$ctrl\.urlToCreate\s?/g);
-        });
-        it('has name in template [urlToDelete]', () => {
-            expect(HomeTemplate).toMatch(/{{\s?\$ctrl\.urlToDelete\s?}}/g);
+        it('has name in template [url]', () => {
+            expect(HomeTemplate).toMatch(/\s?\$ctrl\.url\s?/g);
         });
     });
 

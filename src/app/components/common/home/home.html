@@ -4,72 +4,68 @@
     <div class="container jumbotron">
         <h1>{{ $ctrl.title }}</h1>
 
-        <h2>Shortlink erstellen</h2>
-
         <div class="form-group">
-            <input type="url" class="form-control" ng-model=$ctrl.urlToCreate
+            <input type="url" class="form-control" ng-model=$ctrl.url
                    placeholder={{$ctrl.descriptionOfAction}}>
 
+            <input ng-show=$ctrl.showVanity type="text" class="form-control" ng-model=$ctrl.txtIdForUrl
+                   placeholder={{$ctrl.descriptionOfVanityAction}}>
+
+            <p></p>
+            <button type="button" class="btn btn-default" ng-click=$ctrl.switchVanityValue()>
+
+                <span ng-show=!$ctrl.showVanity>
+                    >
+                </span>
+                <span ng-show=$ctrl.showVanity>
+                    <
+                </span>
+
+            </button>
             <p></p>
 
-            <button type="button" class="btn btn-default tile" ng-click=$ctrl.createUrl()>
+            <button ng-show=!$ctrl.showVanity type="button" class="btn btn-default tile"
+                    ng-click=$ctrl.createUrl()>
                 <span>{{ $ctrl.labelCreateButton }}</span>
             </button>
-        </div>
 
-        <p></p>
-
-        <div ng-show="$ctrl.urlId != ''">
-            Der Shortlink ist: {{ $ctrl.baseRedirectUrl}}{{ $ctrl.urlId }}
-        </div>
-
-        <p>&nbsp;</p>
-
-        <h2>Shortlink löschen</h2>
-
-        <div class="form-group">
-            <input type="url" class="form-control" ng-model=$ctrl.urlToDelete
-                   placeholder="Geben Sie hier den zu löschenden Shortlink ein.">
-
-            <p></p>
+            <button ng-show=$ctrl.showVanity type="button" class="btn btn-default tile"
+                    ng-click=$ctrl.createVanityUrl()>
+                <span>{{ $ctrl.labelCreateButton }} (Vanity URL)</span>
+            </button>
 
             <button type="button" class="btn btn-default tile" ng-click=$ctrl.deleteShortlink()>
-                <span>Lösche Schortlink</span>
+                <span>Shortlink löschen</span>
             </button>
+
+            <div ng-show="$ctrl.urlId != '' && !$ctrl.showVanity">
+                Der Shortlink ist: {{ $ctrl.baseRedirectUrl}}{{ $ctrl.urlId }}
+            </div>
+
+            <div ng-show="$ctrl.deleted == true">
+                Der Shortlink {{ $ctrl.urlToDelete }} wurde gelöscht.
+            </div>
+
+            <div ng-show="$ctrl.txtIdForUrl != '' && $ctrl.showVanity">
+                Vorschau: {{ $ctrl.baseRedirectUrl }}{{ $ctrl.txtIdForUrl }}
+            </div>
+
+            <div ng-show="$ctrl.vanityUrlCreated && $ctrl.showVanity">
+                Der Shortlink ist: {{ $ctrl.baseRedirectUrl }}{{ $ctrl.txtIdForUrl }}
+            </div>
+
+            <div ng-show="$ctrl.vanityUrlErrorMessage != null && $ctrl.showVanity">
+                {{ $ctrl.vanityUrlErrorMessage }}
+            </div>
         </div>
 
         <p></p>
 
-        <div ng-show="$ctrl.deleted == true">
-            Der Shortlink {{$ctrl.urlToDelete}} wurde gelöscht.
-        </div>
-
-        <p>&nbsp;</p>
-
-        <h2>Vanity URL Service</h2>
-        <div>Eine Vanity URL ist eine sprechende Internet-Adresse, die nicht aus kryptischen Zeichen, sondern
+        <h2 ng-show=$ctrl.showVanity>Vanity URL Service</h2>
+        <div ng-show=$ctrl.showVanity>Eine Vanity URL ist eine sprechende Internet-Adresse, die nicht aus
+            kryptischen Zeichen, sondern
             aus lesbaren Wörtern besteht.<br>
             Beispiel für eine Vanity URL: {{$ctrl.baseRedirectUrl}}meineUrl
-        </div>
-        <p></p>
-        <input type="url" class="form-control" ng-model=$ctrl.urlToCreate
-               placeholder={{$ctrl.descriptionOfAction}}>
-        <input type="text" class="form-control" ng-model=$ctrl.txtIdForUrl
-               placeholder="Fügen Sie hier Ihren Text ein, um die Vanity URL mit Ihrem Text zu erstellen.">
-        <div ng-show="$ctrl.txtIdForUrl != ''">
-            Vorschau: {{$ctrl.baseRedirectUrl}}{{$ctrl.txtIdForUrl}}
-        </div>
-        <p></p>
-
-        <button type="button" class="btn btn-default tile" ng-click=$ctrl.createVanityUrl()>
-            <span>{{$ctrl.labelCreateButton}} (Vanity URL)</span>
-        </button>
-
-        <div ng-show=$ctrl.vanityUrlCreated>
-            Der Shortlink ist: {{ $ctrl.baseRedirectUrl}}{{ $ctrl.txtIdForUrl }}
-        </div>
-        <div ng-show="$ctrl.vanityUrlErrorMessage != null">
-            {{$ctrl.vanityUrlErrorMessage}}
         </div>
     </div>
 </main>
