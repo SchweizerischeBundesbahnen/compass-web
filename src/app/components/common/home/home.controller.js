@@ -1,5 +1,6 @@
 let self;
 class HomeController {
+    /*@ngInject*/
     constructor($http) {
         this.backendServiceUrl = 'http://localhost:8080/rest/1.0/shortlink/create?dest=';
         this.backendVanityServiceUrl = 'http://localhost:8080/rest/1.0/shortlink/createVanityUrl?';
