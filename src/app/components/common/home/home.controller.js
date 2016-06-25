@@ -1,26 +1,63 @@
-/*
- * Copyright (C) Schweizerische Bundesbahnen SBB, 2016.
- */
 let self;
 class HomeController {
-    constructor($http) {
-        this.backendServiceUrl = 'http://localhost:8080/rest/1.0/shortlink/create?dest=';
+    /*@ngInject*/
+    constructor($http, config) {
+        this.backendServiceUrl = config.backendUrl + '/rest/1.0/shortlink/create?dest=';
+        this.backendVanityServiceUrl = config.backendUrl + '/rest/1.0/shortlink/createVanityUrl?';
+        this.baseDeleteUrl = config.backendUrl + '/rest/1.0/shortlink/delete?id=';
+        this.baseRedirectUrl = config.backendUrl + '/x/';
+        this.urlToCreate = '';
+        this.urlToDelete = '';
+        this.txtIdForUrl = '';
+        this.urlId = '';
 
         this.title = 'URL Shortener Service';
-        this.welcomeMessage = 'Herzlich Willkommen zum SBB-Service \'URL Shortener\'';
-        this.labelCreateButton = 'Generiere Short-URL';
+        this.labelCreateButton = 'Generiere Shortlink';
         this.descriptionOfAction =
-            'Um eine Short-URL zu erstellen, fügen Sie bitte im Textfeld die gewünschte Endadresse ein.';
+            'Fügen Sie hier die gewünschte Adresse ein und klicken Sie anschliessend unten auf den Knopf.';
 
         this.http = $http;
         self = this;
     }
 
     createUrl() {
-        var url = document.getElementById('urlAddress').value;
-        this.http.post(this.backendServiceUrl + url)
+        if (this.urlToCreate === undefined || this.urlToCreate === '') return;
+
+        this.http.post(this.backendServiceUrl + this.urlToCreate)
             .success(function (data) {
-                self.id = data.id;
+                self.urlId = data.id;
+            });
+    }
+
+    deleteShortlink() {
+        if (this.urlToDelete === undefined || this.urlToDelete === '') return;
+
+        var indexOfSlash = this.urlToDelete.indexOf('x/');
+        if (indexOfSlash == -1) return;
+
+        var id = this.urlToDelete.substr(indexOfSlash + 2);
+
+        this.http.delete(this.baseDeleteUrl + id).success(() => {
+            self.deleted = true;
+        }).error(() => {
+            self.deleted = false;
+        });
+    }
+
+    createVanityUrl() {
+        if (this.txtIdForUrl === '' || this.urlToCreate === undefined || this.urlToCreate === '') return;
+
+        var params = 'text=' + this.txtIdForUrl + '&url=' + this.urlToCreate;
+        this.http.post(this.backendVanityServiceUrl + params)
+            .success(() => {
+                self.vanityUrlCreated = true;
+            })
+            .error(function (data) {
+                self.vanityUrlCreated = false;
+                if (data.status == 409) {
+                    self.vanityUrlErrorMessage = 'Der Text wird bereits gebraucht, bitte wählen ' +
+                        'Sie einen anderen Text.';
+                }
             });
     }
 }

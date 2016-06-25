@@ -28,9 +28,9 @@ import langDe from './languages/lang-de.json';
 import langEn from './languages/lang-en.json';
 
 angular.module('app', [
-    uiRouter, ngTranslate, ngTranslateStaticFilesLoader, ngResource,
-    uiBootstrap, Components.name
-])
+        uiRouter, ngTranslate, ngTranslateStaticFilesLoader, ngResource,
+        uiBootstrap, Components.name
+    ])
     .config(/*@ngInject*/($translateProvider, $httpProvider) => {
 
         // Translation settings
@@ -45,6 +45,7 @@ angular.module('app', [
 
     // Globale Konfigurationeinstellungen
     .constant('config', {
+        backendUrl: 'http://localhost:8080',
         authServerUrl: 'http://localhost:9999/',
         authRedirectUrl: window.location.origin + '#/logincallback',
         authLoginUrl: 'oauth/authorize?response_type=token&client_id=acme&redirect_uri=',

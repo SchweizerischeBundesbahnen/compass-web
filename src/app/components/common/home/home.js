@@ -14,8 +14,8 @@ import template from './home.html';
 import controller from './home.controller';
 
 let homeModule = angular.module('home', [
-    uiRouter
-])
+        uiRouter
+    ])
     .config(/*@ngInject*/($stateProvider, $urlRouterProvider) => {
         $urlRouterProvider.otherwise('/');
 
