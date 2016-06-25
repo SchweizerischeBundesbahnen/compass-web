@@ -5,7 +5,7 @@ class HomeController {
         this.backendServiceUrl = config.backendUrl + '/rest/1.0/shortlink/create?dest=';
         this.backendVanityServiceUrl = config.backendUrl + '/rest/1.0/shortlink/createVanityUrl?';
         this.baseDeleteUrl = config.backendUrl + '/rest/1.0/shortlink/delete?id=';
-        this.baseRedirectUrl = config.backendUrl + '/x/';
+        this.baseRedirectUrl = config.backendUrl + '/';
         this.urlToCreate = '';
         this.urlToDelete = '';
         this.txtIdForUrl = '';
