@@ -1,5 +1,5 @@
 # Dockerfile for Compass Web
-FROM nginx
+FROM nginx:alpine
 MAINTAINER Igor Masen <igor.masen@sbb.ch>
 
 ENV ARTIFACT_GROUPID ch.sbb
@@ -10,7 +10,8 @@ ENV ARTIFACT_URL http://repo.sbb.ch/service/local/artifact/maven/content?r=${REP
 ENV BACKEND_URL http://localhost:8080
 
 # Install curl
-RUN apt-get update && apt-get install curl -y && apt-get clean
+RUN apk add --update curl && \
+        rm -rf /var/cache/apk/*
 
 # Get the app
 RUN curl $ARTIFACT_URL -o ${ARTIFACT_ID}-${ARTIFACT_VERSION}.tar.gz
