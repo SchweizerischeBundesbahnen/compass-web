@@ -15,6 +15,7 @@ import ngResource from 'angular-resource';
 import ngTranslate from 'angular-translate';
 import ngTranslateStaticFilesLoader from 'angular-translate-loader-static-files';
 import uiBootstrap from 'angular-ui-bootstrap';
+import clipboardModule from 'angular-clipboard';
 
 // Style Imports
 import 'esta-webjs-style/build/css/style.css';
@@ -29,7 +30,7 @@ import langEn from './languages/lang-en.json';
 
 angular.module('app', [
         uiRouter, ngTranslate, ngTranslateStaticFilesLoader, ngResource,
-        uiBootstrap, Components.name
+        uiBootstrap, Components.name, clipboardModule.name
     ])
     .config(/*@ngInject*/($translateProvider, $httpProvider) => {
 

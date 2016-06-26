@@ -5,6 +5,7 @@
   "homepage": "https://github.com/SchweizerischeBundesbahnen/compass-web",
   "dependencies": {
     "angular": "^1.5.2",
+    "angular-clipboard": "^1.4.2",
     "angular-resource": "^1.5.2",
     "angular-translate": "^2.8.1",
     "angular-translate-loader-static-files": "^2.8.1",

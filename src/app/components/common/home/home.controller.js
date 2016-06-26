@@ -24,6 +24,8 @@ class HomeController {
     }
 
     createUrl() {
+        this.deleted = false;
+
         if (this.url === undefined || this.url === '') return;
 
         this.http.post(this.backendServiceUrl + this.url)
@@ -33,6 +35,8 @@ class HomeController {
     }
 
     deleteShortlink() {
+        this.urlId = '';
+
         if (this.url === undefined || this.url === '') return;
 
         var indexOfSlash = this.url.lastIndexOf('/');
@@ -66,10 +70,9 @@ class HomeController {
 
     switchVanityValue() {
         this.showVanity = !this.showVanity;
-        // Reset variables, such that there are no texts shown with a wrong context
+        this.deleted = false;
         this.urlId = '';
     }
-
 }
 
 export default HomeController;
