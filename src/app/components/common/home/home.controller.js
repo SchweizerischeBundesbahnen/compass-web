@@ -28,7 +28,7 @@ class HomeController {
 
         if (this.url === undefined || this.url === '') return;
 
-        this.http.post(this.backendServiceUrl + this.url)
+        this.http.post(this.backendServiceUrl + encodeURIComponent(this.url))
             .success(function (data) {
                 self.urlId = data.id;
             });
@@ -54,7 +54,7 @@ class HomeController {
     createVanityUrl() {
         if (this.txtIdForUrl === '' || this.url === undefined || this.url === '') return;
 
-        var params = 'text=' + this.txtIdForUrl + '&url=' + this.url;
+        var params = 'text=' + this.txtIdForUrl + '&url=' + encodeURIComponent(this.url);
         this.http.post(this.backendVanityServiceUrl + params)
             .success(() => {
                 self.vanityUrlCreated = true;
